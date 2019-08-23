@@ -8,8 +8,5 @@ def cargadatos():
 	        results.append(row)
 	return results
 
-def BusquedaHeuristicaDeUnOrigen(origen,array):
-	pass
-
-array =cargadatos()
-print(array)
+#array =cargadatos()
+#print(array)
