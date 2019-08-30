@@ -37,13 +37,14 @@ class Cromosoma:
 
 class Population:
 	#crea la poblacion
-	def __init__(self, crosProv, mutProv):
+	def __init__(self, crosProv, mutProv, veriElitismo = True):
 		self.popu = []
 		self.crosProv = crosProv
 		self.mutProv = mutProv
 		for i in range(50):
 			self.popu.append(Cromosoma())
 		self.Gen = 0
+		self.veriElitismo = veriElitismo
 
 	#metodo de crosover
 	def Crossover(padre1, padre2):
@@ -118,8 +119,10 @@ class Population:
 		for i in range(len(self.popu)):
 		  ruleta += [i] * int((1 - float(self.popu[i].kmRecorridos / kmTotal))*100)
 		
-		#agrega a los mejores padres a la lista
-		newList += self.serchbest()
+		#chequea si utiliza elitismo o no
+		if self.veriElitismo:
+			#agrega a los mejores padres a la lista
+			newList += self.serchbest()
 		
 		#crea a los hijos con cros over y mutacion
 		while len(newList) < 50:

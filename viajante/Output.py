@@ -31,9 +31,9 @@ class resultScreen:
   
   def __init__(self, result):
     #crea ventana
-    mainWindow = Tk()
-
-    print(len(self.listOfPoints))
+    mainWindow = Toplevel()
+    #print(len(self.listOfPoints))
+    mainWindow.title("Mapa")
 
 
     #imagen del mapa
@@ -123,9 +123,12 @@ class resultScreen:
   def creaLineas(self, canvas, resultado):
     linePos = (0,0,0,0)
     orden = resultado["orden"]
+    #print(orden)
     for i in range(len(orden)-1):
-      iniPos = self.listOfPoints[orden[i]]
-      endPos = self.listOfPoints[orden[i+1]]
+      #print(i+1, ornden[i+1])
+      #print(self.listOfPoints[orden[i+1]])
+      iniPos = self.listOfPoints[orden[i]-1]
+      endPos = self.listOfPoints[orden[i+1]-1]
       linePos = (iniPos["posX"], iniPos["posY"], endPos["posX"], endPos["posY"])
       """
       linePos[0] = iniPos["posX"]
@@ -139,7 +142,7 @@ class resultScreen:
   def cargaListBox(self, listbox, res):
     orden = res["orden"]
     for i in range(len(orden)):
-      listbox.insert(END, str(self.listOfPoints[orden[i]]["provincia"]))
+      listbox.insert(END, str(self.listOfPoints[orden[i]-1]["provincia"]))
    
    
    
